@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
-    @Positive(message = "Id Cannot be negative")
+    @NotBlank(message = "Id Cannot be blank")
     private String id;
     @NotBlank(message = "Name can't be blank")
     private String name;
