@@ -1,5 +1,6 @@
 package ie.atu.week3refresher;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +19,12 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public String addProduct(@RequestBody Product product) {
+    public String addProduct(@Valid @RequestBody Product product) {
         return productService.addProduct(product);
     }
 
     @PutMapping("/edit")
-    public String editProduct(@RequestBody Product product) {
+    public String editProduct(@Valid @RequestBody Product product) {
         return productService.updateProduct(product);
     }
     @DeleteMapping("/remove/{id}")
