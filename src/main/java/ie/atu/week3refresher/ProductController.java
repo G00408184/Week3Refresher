@@ -10,17 +10,18 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
 
+    OpenFeign caller;
+
     @Autowired
     private ProductService productService;
 
     @GetMapping("/GET")
     public List<Product> getProduct() {
-        return productService.getProduct();
-    }
+      return caller.getProduct();    }
 
     @PostMapping("/add")
     public String addProduct(@Valid @RequestBody Product product) {
-        return productService.addProduct(product);
+        return caller.addProduct(product);
     }
 
     @PutMapping("/edit")
