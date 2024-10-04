@@ -1,6 +1,8 @@
 package ie.atu.week3refresher;
 
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,12 +10,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/product")
+
+@AllArgsConstructor
 public class ProductController {
 
-    OpenFeign caller;
+      private OpenFeign caller;
 
-    @Autowired
-    private ProductService productService;
+      private ProductService productService;
 
     @GetMapping("/GET")
     public List<Product> getProduct() {
@@ -29,8 +32,6 @@ public class ProductController {
         return productService.updateProduct(product);
     }
     @DeleteMapping("/remove/{id}")
-    public String removeProduct(@PathVariable String id) {
-        return productService.deleteProductById(id);
-    }
+    public String removeProduct(@PathVariable String id) { return productService.deleteProductById(id);}
 
 }
